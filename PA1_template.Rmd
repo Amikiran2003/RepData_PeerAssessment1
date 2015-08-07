@@ -1,7 +1,6 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
 date: "August 7, 2015"
-author: "Amita"
 output: html_document
 ---
 
@@ -39,9 +38,9 @@ NOTE: The GitHub repository also contains the dataset for the assignment so you 
 
 # Loading and preprocessing the data
 
-1. Load the data (i.e. read.csv())
+* Load the data (i.e. read.csv())
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
         # Clear the workspace
         rm(list=ls())
@@ -52,7 +51,7 @@ NOTE: The GitHub repository also contains the dataset for the assignment so you 
         
 ```
 
-2. Process/transform the data (if necessary) into a format suitable for analysis
+* Process/transform the data (if necessary) into a format suitable for analysis
         
 ```{r, echo=FALSE}
         
@@ -91,7 +90,7 @@ We display the first few rows of the activity data frame:
 
 For this part of the assignment, you can ignore the missing values in the dataset.
 
-1. Calculate the total number of steps taken per day
+* Calculate the total number of steps taken per day
 
 ```{r, echo=FALSE}
         # Compute the total number of steps each day (NA values removed)
@@ -108,7 +107,7 @@ We display the first few rows of the sum_data data frame:
         head(sum_data)
 ```
 
-2. If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day
+* If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day
 
 ```{r, echo=FALSE}
         # Compute the histogram of the total number of steps each day
@@ -120,7 +119,7 @@ We display the first few rows of the sum_data data frame:
         main="Histogram of the total number of steps taken each day\n(NA removed)")
 ```
 
-3. Calculate and report the mean and median of the total number of steps taken per day.
+* Calculate and report the mean and median of the total number of steps taken per day.
 
 ```{r, echo=TRUE, results='hide'}
         mean(sum_data$total)
@@ -131,7 +130,7 @@ We display the first few rows of the sum_data data frame:
 
 # What is the average daily activity pattern?
 
-1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+* Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
         
 ```{r, echo=FALSE}
@@ -169,7 +168,7 @@ The time serie plot is created by the following lines of code
 ```  
 
 
-2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+* Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 ```{r, echo=TRUE}   
         # We find the position of the maximum mean
@@ -188,7 +187,7 @@ The 5-minute interval that contains the maximum of steps, on average across all 
 
 Note that there are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce bias into some calculations or summaries of the data.
 
-1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
+* Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
 
 ```{r}
         # Clear the workspace
@@ -200,7 +199,7 @@ Note that there are a number of days/intervals where there are missing values (c
 ```
 The number of NA's is `r NA_count`.
 
-2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
+* Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
 ```{r}
         # Clear the workspace
@@ -214,7 +213,7 @@ The number of NA's is `r NA_count`.
         
 ```        
 
-3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
+* Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```{r}
         # Replace the NAs by the means
@@ -228,7 +227,7 @@ We display the first few rows of the new activity data frame:
         head(activity)
 ```
 
-4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+* Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 ```{r}
         # Compute the total number of steps each day (NA values removed)
@@ -260,14 +259,14 @@ These values differ greatly from the estimates from the first part of the assign
 
 For this part the weekdays() function may be of some help here. Use the dataset with the filled-in missing values for this part.
 
-1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
+* Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
 ```{r}
         # The new factor variable "daytype" was already in the activity data frame
         head(activity)
 ```
 
-2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
+* Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
 ```{r}
         # Load the lattice graphical library
