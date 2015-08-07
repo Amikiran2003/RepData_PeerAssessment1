@@ -1,6 +1,6 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
-date: "August 6, 2015"
+date: "August 7, 2015"
 output: html_document
 ---
 
@@ -41,16 +41,20 @@ NOTE: The GitHub repository also contains the dataset for the assignment so you 
 1. Load the data (i.e. read.csv())
 
 ```{r, echo=FALSE}
+
         # Clear the workspace
         rm(list=ls())
 
         # Load the raw activity data
-        activity_raw <- read.csv("activity.csv", stringsAsFactors=FALSE)
+        unzip(zipfile="activity.zip")
+        activity_raw <- read.csv("activity.csv")
+        
 ```
 
 2. Process/transform the data (if necessary) into a format suitable for analysis
         
 ```{r, echo=FALSE}
+        
         # Transform the date attribute to an actual date format
         activity_raw$date <- as.POSIXct(activity_raw$date, format="%Y-%m-%d")
 
@@ -104,6 +108,7 @@ We display the first few rows of the sum_data data frame:
 ```
 
 2. If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day
+
 ```{r, echo=FALSE}
         # Compute the histogram of the total number of steps each day
         hist(sum_data$total, 
@@ -115,6 +120,7 @@ We display the first few rows of the sum_data data frame:
 ```
 
 3. Calculate and report the mean and median of the total number of steps taken per day.
+
 ```{r, echo=TRUE, results='hide'}
         mean(sum_data$total)
         median(sum_data$total)
@@ -182,6 +188,7 @@ The 5-minute interval that contains the maximum of steps, on average across all 
 Note that there are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce bias into some calculations or summaries of the data.
 
 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
+
 ```{r}
         # Clear the workspace
         rm(max_interval)
@@ -207,6 +214,7 @@ The number of NA's is `r NA_count`.
 ```        
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
+
 ```{r}
         # Replace the NAs by the means
         activity[na_pos, "steps"] <- mean_vec
@@ -220,6 +228,7 @@ We display the first few rows of the new activity data frame:
 ```
 
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+
 ```{r}
         # Compute the total number of steps each day (NA values removed)
         sum_data <- aggregate(activity$steps, by=list(activity$date), FUN=sum)
@@ -279,6 +288,7 @@ We display the first few rows of the mean_data data frame:
 ```
 
 The time series plot take the following form:
+
 ```{r}
         # Compute the time serie plot
 xyplot(mean ~ interval | daytype, mean_data, 
